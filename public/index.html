@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VASlink — Bulk SMS, USSD &amp; Airtime Platform</title>
+  <meta name="description" content="One platform and one API for bulk SMS, two-way shortcodes, premium subscriptions, USSD and airtime across Safaricom, Airtel and Telkom.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234f46e5'/%3E%3Ccircle cx='16' cy='16' r='3' fill='white'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/js/icons.js"></script>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <div class="container">
+      <nav class="nav" aria-label="Main">
+        <a href="/" class="logo"><span class="logo-mark"><i data-icon="logo"></i></span>VASlink</a>
+        <div class="nav-links">
+          <a href="#products">Products</a>
+          <a href="#how">How it works</a>
+          <a href="#developers">Developers</a>
+          <a href="#pricing">Pricing</a>
+          <a href="/docs">API docs</a>
+        </div>
+        <div class="nav-actions">
+          <button class="icon-btn" data-theme-toggle type="button"></button>
+          <a href="/app" class="btn btn-ghost">Sign in</a>
+          <a href="/app" class="btn btn-primary">Get started</a>
+          <button class="icon-btn menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" id="menuToggle"><i data-icon="menu"></i></button>
+        </div>
+      </nav>
+      <div class="mobile-nav" id="mobileNav">
+        <a href="#products">Products</a>
+        <a href="#how">How it works</a>
+        <a href="#developers">Developers</a>
+        <a href="#pricing">Pricing</a>
+        <a href="/docs">API docs</a>
+        <a href="/app">Sign in</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow"><b>New</b> USSD menu builder with live simulator</span>
+          <h1>Reach every phone with <span class="gradient-text">SMS, USSD &amp; airtime</span> — through one API.</h1>
+          <p class="lead">VASlink is the value-added services layer on top of mobile networks. Send bulk campaigns, run premium subscription services, build USSD apps and disburse airtime, all billed from one prepaid wallet.</p>
+          <div class="hero-cta">
+            <a href="/app" class="btn btn-primary btn-lg">Open the dashboard <i data-icon="arrow"></i></a>
+            <a href="/docs" class="btn btn-ghost btn-lg"><i data-icon="code"></i> Read the API docs</a>
+          </div>
+          <div class="hero-stats">
+            <div><strong>3</strong><span>Mobile networks</span></div>
+            <div><strong>&lt;3s</strong><span>Median delivery</span></div>
+            <div><strong>KES 0.60</strong><span>From, per SMS</span></div>
+          </div>
+        </div>
+
+        <div class="phone-stage" aria-hidden="true">
+          <div class="float-card one">
+            <div class="row"><span class="dot tone-green"><i data-icon="check"></i></span>
+              <div><strong>98.4%</strong><small>Delivered today</small></div></div>
+          </div>
+          <div class="phone">
+            <span class="phone-notch"></span>
+            <div class="phone-screen">
+              <div class="phone-top"><span class="avatar">KB</span><div><b>KILIMO_BANK</b><small>Text message</small></div></div>
+              <div class="phone-chat">
+                <div class="bubble in">Hi Amina, your loan of KES 12,500 has been approved and sent to M-Pesa.<time>09:41</time></div>
+                <div class="bubble in">Repay by 30 Oct to unlock a higher limit. Dial *384*123# to check your balance.<time>09:41</time></div>
+                <div class="bubble out">BALANCE<time>09:43</time></div>
+              </div>
+            </div>
+            <div class="ussd-pop">Kilimo Bank<br>1. Check balance<br>2. Repay loan<br>3. Mini statement
+              <div class="ussd-actions"><span>Cancel</span><span>Send</span></div></div>
+          </div>
+          <div class="float-card two">
+            <div class="row"><span class="dot tone-indigo"><i data-icon="airtime"></i></span>
+              <div><strong>+ KES 50</strong><small>Airtime reward sent</small></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="networks">
+      <div class="container">
+        <span class="label">Direct connectivity to</span>
+        <span>Safaricom</span><span>Airtel</span><span>Telkom</span><span>M-Pesa top-up</span>
+      </div>
+    </div>
+
+    <section class="section" id="products">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="kicker">Products</span>
+          <h2>Every mobile channel your customers already use</h2>
+          <p>No smartphone or data bundle needed. VASlink works on any handset, on any network.</p>
+        </div>
+        <div class="product-grid">
+          <article class="product reveal">
+            <div class="p-icon tone-indigo"><i data-icon="sms"></i></div>
+            <h3>Bulk SMS</h3>
+            <p>Personalised campaigns to thousands of customers in seconds, from your own branded sender ID.</p>
+            <ul><li>Merge fields such as {name}</li><li>Scheduling &amp; cancellation with refunds</li><li>Real-time delivery reports</li></ul>
+          </article>
+          <article class="product reveal">
+            <div class="p-icon tone-teal"><i data-icon="inbox"></i></div>
+            <h3>Two-way SMS &amp; shortcodes</h3>
+            <p>Receive replies on a shared or dedicated shortcode and trigger actions from keywords.</p>
+            <ul><li>Keyword routing</li><li>Automatic STOP opt-out handling</li><li>Inbound webhooks</li></ul>
+          </article>
+          <article class="product reveal">
+            <div class="p-icon tone-amber"><i data-icon="star"></i></div>
+            <h3>Premium subscriptions</h3>
+            <p>Launch paid content services such as news, tips or alerts that are billed to the subscriber's airtime.</p>
+            <ul><li>Opt-in by keyword or USSD</li><li>Content broadcasts</li><li>Revenue-share reporting</li></ul>
+          </article>
+          <article class="product reveal">
+            <div class="p-icon tone-rose"><i data-icon="ussd"></i></div>
+            <h3>USSD applications</h3>
+            <p>Interactive menus that work on every feature phone, made with a visual builder and a live simulator.</p>
+            <ul><li>Nested menus with back navigation</li><li>Actions such as subscribe</li><li>Session analytics</li></ul>
+          </article>
+          <article class="product reveal">
+            <div class="p-icon tone-green"><i data-icon="airtime"></i></div>
+            <h3>Airtime disbursement</h3>
+            <p>Reward customers, pay field agents or run promotions with instant airtime top-ups.</p>
+            <ul><li>Bulk top-ups in one request</li><li>3% discount on face value</li><li>Automatic refund on failure</li></ul>
+          </article>
+          <article class="product reveal">
+            <div class="p-icon tone-indigo"><i data-icon="wallet"></i></div>
+            <h3>Wallet &amp; analytics</h3>
+            <p>Prepaid billing for every service, with a full ledger and live dashboards.</p>
+            <ul><li>Top up via M-Pesa, card or bank</li><li>Per-network cost breakdown</li><li>Delivery-rate tracking</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how" style="padding-top:0">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="kicker">How it works</span>
+          <h2>Live in an afternoon</h2>
+          <p>Start sending from the dashboard straight away, or wire up the REST API when you are ready to automate.</p>
+        </div>
+        <div class="steps">
+          <div class="step reveal"><h3>Fund your wallet</h3><p>Top up with M-Pesa, card or bank transfer. You pay only for what you send. There are no monthly fees.</p></div>
+          <div class="step reveal"><h3>Import your audience</h3><p>Paste or upload contacts, organise them into groups, and VASlink normalises and de-duplicates every number.</p></div>
+          <div class="step reveal"><h3>Send &amp; measure</h3><p>Launch campaigns, USSD menus or airtime payouts, then watch delivery reports arrive in real time.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="developers" style="padding-top:0">
+      <div class="container">
+        <div class="dev reveal">
+          <div>
+            <h2>Built for developers</h2>
+            <p>A clean REST API with JSON in and JSON out. The webhook formats follow the conventions of the main African gateways, so your existing integrations still work.</p>
+            <ul>
+              <li>API-key authentication</li>
+              <li>Delivery-report and inbound-SMS callbacks</li>
+              <li>USSD callback with CON / END responses</li>
+              <li>Pluggable gateway: simulator or Africa's Talking</li>
+            </ul>
+            <a href="/docs" class="btn btn-primary">Explore the API <i data-icon="arrow"></i></a>
+          </div>
+          <div class="code-card">
+            <div class="code-tabs" role="tablist">
+              <button role="tab" aria-selected="true" data-tab="curl">cURL</button>
+              <button role="tab" aria-selected="false" data-tab="node">Node.js</button>
+              <button role="tab" aria-selected="false" data-tab="python">Python</button>
+            </div>
+<pre data-code="curl"><span class="tok-c"># Send a personalised bulk SMS</span>
+curl -X POST https://your-host/api/sms/send \
+  -H <span class="tok-s">"X-API-Key: $VAS_API_KEY"</span> \
+  -H <span class="tok-s">"Content-Type: application/json"</span> \
+  -d <span class="tok-s">'{
+    "senderId": "VAS_DEMO",
+    "message": "Hi {name}, your order has shipped!",
+    "recipients": ["0712345678", "0733456789"],
+    "groupIds": ["grp_customers"]
+  }'</span></pre>
+<pre data-code="node" hidden><span class="tok-k">const</span> res = <span class="tok-k">await</span> fetch(<span class="tok-s">'https://your-host/api/sms/send'</span>, {
+  method: <span class="tok-s">'POST'</span>,
+  headers: {
+    <span class="tok-s">'X-API-Key'</span>: process.env.VAS_API_KEY,
+    <span class="tok-s">'Content-Type'</span>: <span class="tok-s">'application/json'</span>,
+  },
+  body: JSON.stringify({
+    senderId: <span class="tok-s">'VAS_DEMO'</span>,
+    message: <span class="tok-s">'Hi {name}, your order has shipped!'</span>,
+    recipients: [<span class="tok-s">'0712345678'</span>],
+  }),
+});
+<span class="tok-k">const</span> campaign = <span class="tok-k">await</span> res.json();
+console.log(campaign.id, campaign.cost); <span class="tok-c">// cmp_… 0.8</span></pre>
+<pre data-code="python" hidden><span class="tok-k">import</span> os, requests
+
+r = requests.post(
+    <span class="tok-s">"https://your-host/api/airtime/send"</span>,
+    headers={<span class="tok-s">"X-API-Key"</span>: os.environ[<span class="tok-s">"VAS_API_KEY"</span>]},
+    json={<span class="tok-s">"recipients"</span>: [
+        {<span class="tok-s">"phone"</span>: <span class="tok-s">"0712345678"</span>, <span class="tok-s">"amount"</span>: <span class="tok-n">50</span>},
+    ]},
+)
+print(r.json()[<span class="tok-s">"total"</span>])  <span class="tok-c"># 48.5, i.e. 3% discount</span></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pricing" style="padding-top:0">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="kicker">Pricing</span>
+          <h2>Simple, per-message pricing</h2>
+          <p>Prepaid and pay-as-you-go. Volume rates apply automatically as you grow.</p>
+        </div>
+        <div class="pricing-grid">
+          <div class="price-card reveal">
+            <h3>Starter</h3>
+            <p class="muted">For small businesses and pilots.</p>
+            <div class="price">KES 0.80 <small>/ SMS</small></div>
+            <p class="muted">Pay as you go, no minimum.</p>
+            <ul>
+              <li><span>Safaricom</span><span>KES 0.80</span></li>
+              <li><span>Airtel / Telkom</span><span>KES 0.60</span></li>
+              <li><span>Shared shortcode</span><span>Included</span></li>
+              <li><span>USSD sessions</span><span>Shared code</span></li>
+            </ul>
+            <a href="/app" class="btn btn-ghost">Start free</a>
+          </div>
+          <div class="price-card featured reveal">
+            <h3>Business</h3>
+            <p class="muted">For 100k+ messages a month.</p>
+            <div class="price">KES 0.55 <small>/ SMS</small></div>
+            <p class="muted">Volume pricing, with your own sender ID.</p>
+            <ul>
+              <li><span>Safaricom</span><span>KES 0.55</span></li>
+              <li><span>Airtel / Telkom</span><span>KES 0.45</span></li>
+              <li><span>Dedicated keyword</span><span>Included</span></li>
+              <li><span>Airtime discount</span><span>3%</span></li>
+            </ul>
+            <a href="/app" class="btn btn-primary">Get started</a>
+          </div>
+          <div class="price-card reveal">
+            <h3>Enterprise</h3>
+            <p class="muted">Banks, telcos and government.</p>
+            <div class="price">Custom</div>
+            <p class="muted">SLAs, dedicated shortcodes and on-prem options.</p>
+            <ul>
+              <li><span>Dedicated shortcode</span><span>Yes</span></li>
+              <li><span>Dedicated USSD code</span><span>Yes</span></li>
+              <li><span>Premium rev-share</span><span>Up to 60%</span></li>
+              <li><span>Support</span><span>24/7</span></li>
+            </ul>
+            <a href="mailto:sales@vaslink.example" class="btn btn-ghost">Talk to sales</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="kicker">Use cases</span>
+          <h2>Trusted across industries</h2>
+        </div>
+        <div class="usecases">
+          <div class="usecase reveal"><div class="p-icon tone-indigo" style="width:40px;height:40px;border-radius:10px;display:grid;place-items:center;margin-bottom:12px"><i data-icon="bank"></i></div><h4>Banking &amp; fintech</h4><p>OTPs, transaction alerts, loan reminders and USSD banking.</p></div>
+          <div class="usecase reveal"><div class="p-icon tone-teal" style="width:40px;height:40px;border-radius:10px;display:grid;place-items:center;margin-bottom:12px"><i data-icon="cart"></i></div><h4>Retail &amp; e-commerce</h4><p>Order updates, flash sales and loyalty airtime rewards.</p></div>
+          <div class="usecase reveal"><div class="p-icon tone-amber" style="width:40px;height:40px;border-radius:10px;display:grid;place-items:center;margin-bottom:12px"><i data-icon="school"></i></div><h4>Schools</h4><p>Fee reminders, exam results by SMS and parent notices.</p></div>
+          <div class="usecase reveal"><div class="p-icon tone-rose" style="width:40px;height:40px;border-radius:10px;display:grid;place-items:center;margin-bottom:12px"><i data-icon="heart"></i></div><h4>Health &amp; NGOs</h4><p>Appointment reminders, surveys over USSD and community alerts.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="cta reveal">
+        <h2>Start reaching customers today</h2>
+        <p>Open the dashboard, top up your wallet and send your first campaign in minutes.</p>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+          <a href="/app" class="btn btn-lg btn-white">Open dashboard</a>
+          <a href="/docs" class="btn btn-lg btn-ghost btn-outline-white">API reference</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo"><span class="logo-mark"><i data-icon="logo"></i></span>VASlink</a>
+          <p style="margin-top:12px;max-width:320px">The value-added services platform for mobile messaging, USSD and airtime in East Africa.</p>
+        </div>
+        <div><h5>Products</h5><a href="#products">Bulk SMS</a><a href="#products">Shortcodes</a><a href="#products">USSD</a><a href="#products">Airtime</a></div>
+        <div><h5>Developers</h5><a href="/docs">API reference</a><a href="/docs#webhooks">Webhooks</a><a href="/docs#ussd">USSD callback</a></div>
+        <div><h5>Company</h5><a href="#pricing">Pricing</a><a href="mailto:sales@vaslink.example">Contact sales</a><a href="/app">Sign in</a></div>
+      </div>
+      <div class="footer-bottom"><span>© <span id="year"></span> VASlink. All rights reserved.</span><span>Made in Nairobi</span></div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const header = document.querySelector('.site-header');
+    addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 8), { passive: true });
+
+    const toggle = document.getElementById('menuToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    toggle.addEventListener('click', () => {
+      const open = mobileNav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+    mobileNav.addEventListener('click', (e) => { if (e.target.tagName === 'A') mobileNav.classList.remove('open'); });
+
+    document.querySelectorAll('.code-tabs button').forEach((btn) => btn.addEventListener('click', () => {
+      document.querySelectorAll('.code-tabs button').forEach((b) => b.setAttribute('aria-selected', b === btn));
+      document.querySelectorAll('pre[data-code]').forEach((p) => { p.hidden = p.dataset.code !== btn.dataset.tab; });
+    }));
+
+    const io = 'IntersectionObserver' in window ? new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 }) : null;
+    document.querySelectorAll('.reveal').forEach((el) => io ? io.observe(el) : el.classList.add('in'));
+  </script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>API Reference · VASlink</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234f46e5'/%3E%3Ccircle cx='16' cy='16' r='3' fill='white'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/js/icons.js"></script>
+</head>
+<body>
+  <header class="site-header scrolled">
+    <div class="container">
+      <nav class="nav">
+        <a href="/" class="logo"><span class="logo-mark"><i data-icon="logo"></i></span>VASlink <span class="badge plain" style="margin-left:4px">API</span></a>
+        <div class="nav-actions">
+          <button class="icon-btn" data-theme-toggle type="button"></button>
+          <a href="/app" class="btn btn-primary">Dashboard</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container docs">
+    <nav class="docs-nav" aria-label="API sections">
+      <span class="group-label">Basics</span>
+      <a href="#auth">Authentication</a><a href="#errors">Errors</a>
+      <span class="group-label">Messaging</span>
+      <a href="#sms">Bulk SMS</a><a href="#campaigns">Campaigns</a><a href="#contacts">Contacts &amp; groups</a>
+      <span class="group-label">Services</span>
+      <a href="#subscriptions">Subscriptions</a><a href="#ussd">USSD</a><a href="#airtime">Airtime</a><a href="#wallet">Wallet</a>
+      <span class="group-label">Callbacks</span>
+      <a href="#webhooks">Webhooks</a>
+    </nav>
+
+    <article>
+      <h1>API reference</h1>
+      <p class="muted" style="font-size:17px">Every feature in the dashboard is available over a JSON REST API. Phone numbers are accepted in local (<code>0712345678</code>) or international (<code>+254712345678</code>) format and are always returned in E.164.</p>
+
+      <h2 id="auth">Authentication</h2>
+      <p>Send your API key with every request in the <code>X-API-Key</code> header. <code>Authorization: Bearer &lt;key&gt;</code> also works.</p>
+<pre>curl https://your-host/api/account -H "X-API-Key: $VAS_API_KEY"</pre>
+
+      <h2 id="errors">Errors</h2>
+      <p>Errors return a non-2xx status and a JSON body: <code>{"error": "message"}</code>.</p>
+      <table><thead><tr><th>Status</th><th>Meaning</th></tr></thead><tbody>
+        <tr><td><code>400</code></td><td>Validation failed, for example an invalid number or a missing message</td></tr>
+        <tr><td><code>401</code></td><td>Missing or invalid API key</td></tr>
+        <tr><td><code>402</code></td><td>Insufficient wallet balance</td></tr>
+        <tr><td><code>404</code></td><td>Resource not found</td></tr>
+        <tr><td><code>409</code></td><td>Conflict, such as a duplicate keyword or a campaign that cannot be cancelled</td></tr>
+      </tbody></table>
+
+      <h2 id="sms">Bulk SMS</h2>
+      <div class="endpoint"><span class="method post">POST</span>/api/sms/send</div>
+      <p>Creates a campaign. The cost is debited from your wallet when the campaign is created. Duplicates, invalid numbers and opted-out numbers are removed automatically.</p>
+      <table><thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead><tbody>
+        <tr><td><code>senderId</code></td><td>string</td><td>An approved sender ID</td></tr>
+        <tr><td><code>message</code></td><td>string</td><td>Up to 1,530 characters. Supports <code>{name}</code>, <code>{first_name}</code> and <code>{phone}</code></td></tr>
+        <tr><td><code>recipients</code></td><td>string[] | string</td><td>Phone numbers (array, or a comma/space-separated string)</td></tr>
+        <tr><td><code>groupIds</code></td><td>string[]</td><td>Contact groups to include</td></tr>
+        <tr><td><code>scheduleAt</code></td><td>ISO date</td><td>Optional future send time</td></tr>
+        <tr><td><code>name</code></td><td>string</td><td>Optional campaign label</td></tr>
+      </tbody></table>
+<pre>{
+  "id": "cmp_3f9a1c2b7d4e",
+  "status": "queued",
+  "recipients": 2, "invalid": 0, "duplicates": 1, "optedOut": 0,
+  "cost": 1.4,
+  "stats": { "queued": 2, "sent": 0, "delivered": 0, "failed": 0, "scheduled": 0, "cancelled": 0 }
+}</pre>
+      <div class="endpoint"><span class="method post">POST</span>/api/sms/estimate</div>
+      <p>Same body as <code>/send</code>. It returns the encoding (GSM-7 or UCS-2), the segment count, the per-network cost and your balance, without sending anything.</p>
+      <div class="endpoint"><span class="method get">GET</span>/api/messages?status=failed</div>
+      <div class="endpoint"><span class="method get">GET</span>/api/inbound</div>
+      <div class="endpoint"><span class="method get">GET</span>/api/optouts</div>
+
+      <h2 id="campaigns">Campaigns</h2>
+      <div class="endpoint"><span class="method get">GET</span>/api/campaigns</div>
+      <div class="endpoint"><span class="method get">GET</span>/api/campaigns/:id</div>
+      <div class="endpoint"><span class="method post">POST</span>/api/campaigns/:id/cancel</div>
+      <p>You can cancel only scheduled campaigns. The full cost is refunded to your wallet.</p>
+
+      <h2 id="contacts">Contacts &amp; groups</h2>
+      <div class="endpoint"><span class="method get">GET</span>/api/contacts?groupId=&amp;q=</div>
+      <div class="endpoint"><span class="method post">POST</span>/api/contacts</div>
+<pre>{ "groupId": "grp_customers", "contacts": [ { "name": "Jane", "phone": "0712345678" } ] }</pre>
+      <p>Existing phone numbers are updated (merged into the group), not duplicated.</p>
+      <div class="endpoint"><span class="method delete">DELETE</span>/api/contacts/:id</div>
+      <div class="endpoint"><span class="method get">GET</span>/api/groups</div>
+      <div class="endpoint"><span class="method post">POST</span>/api/groups</div>
+      <div class="endpoint"><span class="method delete">DELETE</span>/api/groups/:id</div>
+
+      <h2 id="subscriptions">Premium subscriptions</h2>
+      <p>Subscribers opt in by texting a keyword to a shortcode, by choosing a USSD menu item, or through the API. <code>STOP</code> unsubscribes them. Broadcasts are billed to subscribers, not your wallet, and you earn a revenue share on each delivered message.</p>
+      <div class="endpoint"><span class="method get">GET</span>/api/services</div>
+      <div class="endpoint"><span class="method post">POST</span>/api/services</div>
+<pre>{ "name": "Football Scores", "keyword": "GOAL", "shortcode": "22384", "price": 5 }</pre>
+      <div class="endpoint"><span class="method get">GET</span>/api/services/:id/subscribers</div>
+      <div class="endpoint"><span class="method post">POST</span>/api/services/:id/subscribers <span class="muted">{ "phone" }</span></div>
+      <div class="endpoint"><span class="method post">POST</span>/api/services/:id/broadcast <span class="muted">{ "message" }</span></div>
+
+      <h2 id="ussd">USSD</h2>
+      <div class="endpoint"><span class="method get">GET</span>/api/ussd/apps</div>
+      <div class="endpoint"><span class="method post">POST</span>/api/ussd/apps</div>
+      <div class="endpoint"><span class="method put">PUT</span>/api/ussd/apps/:id</div>
+      <p>A menu is a tree of nodes. A node with <code>options</code> continues the session (<code>CON</code>). A node without them ends it (<code>END</code>). Callers can press <code>0</code> to go back or <code>00</code> to return to the main menu.</p>
+<pre>{
+  "name": "Self-care", "serviceCode": "*384*55#",
+  "menu": {
+    "text": "Welcome",
+    "options": [
+      { "key": "1", "label": "Balance", "next": { "text": "Your number is {phone}" } },
+      { "key": "2", "label": "Join news", "next": {
+          "text": "Subscribed!", "action": { "type": "subscribe", "serviceId": "svc_news" } } }
+    ]
+  }
+}</pre>
+      <div class="endpoint"><span class="method post">POST</span>/api/ussd/callback <span class="badge plain">no auth</span></div>
+      <p>This endpoint is called by the USSD gateway. It accepts JSON or form-encoded <code>sessionId</code>, <code>serviceCode</code>, <code>phoneNumber</code> and <code>text</code>, where <code>text</code> holds all inputs joined with <code>*</code>. It returns plain text that starts with <code>CON</code> or <code>END</code>.</p>
+
+      <h2 id="airtime">Airtime</h2>
+      <div class="endpoint"><span class="method post">POST</span>/api/airtime/send</div>
+<pre>{ "recipients": [ { "phone": "0712345678", "amount": 100 } ] }</pre>
+      <p>Amounts must be whole numbers from 10 to 10,000. You are charged face value minus the airtime discount, and failed top-ups are refunded automatically.</p>
+      <div class="endpoint"><span class="method get">GET</span>/api/airtime</div>
+
+      <h2 id="wallet">Wallet</h2>
+      <div class="endpoint"><span class="method get">GET</span>/api/wallet</div>
+      <div class="endpoint"><span class="method post">POST</span>/api/wallet/topup <span class="muted">{ "amount", "method": "mpesa|card|bank", "phone" }</span></div>
+      <div class="endpoint"><span class="method get">GET</span>/api/stats</div>
+
+      <h2 id="webhooks">Webhooks</h2>
+      <p>Point your gateway at these endpoints. They do not need an API key.</p>
+      <table><thead><tr><th>Endpoint</th><th>Body</th></tr></thead><tbody>
+        <tr><td><code>POST /api/sms/inbound</code></td><td><code>from</code>, <code>to</code> (shortcode), <code>text</code></td></tr>
+        <tr><td><code>POST /api/callbacks/dlr</code></td><td><code>id</code> (gateway message id), <code>status</code> (Success / Failed / Rejected), <code>failureReason</code></td></tr>
+        <tr><td><code>POST /api/ussd/callback</code></td><td>see <a href="#ussd">USSD</a></td></tr>
+      </tbody></table>
+    </article>
+  </div>
+</body>
+</html>
